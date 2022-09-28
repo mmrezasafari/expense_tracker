@@ -1,0 +1,29 @@
+.nav_container{
+    width: 5rem;
+    height: 100%;
+    background-color: white;
+}
+
+.link {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.link_a {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.nav_icon {
+    width: 2rem;
+    height: 2rem;
+}
+
+ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+

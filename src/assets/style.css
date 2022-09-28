@@ -1,0 +1,18 @@
+:root {
+    --bg-midnight-blue: #0C4160;
+    --bg-gray-blue: #738FA7;
+    --bg-misty-blue: #C3CEDA;
+    --bg-dark-blue: #071330;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-misty-blue);
+}
+
+*{
+    box-sizing: content-box;
+}

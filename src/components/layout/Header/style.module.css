@@ -1,0 +1,27 @@
+.header_container {
+    min-height: fit-content;
+    background-color: var(--bg-dark-blue);
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.logo_container{
+    height: fit-content;
+}
+
+.self_logo {
+    width: 5rem;
+    height: 5rem;
+}
+
+.nav_name_container {
+    margin: 0 20px;
+}
+
+.p_text_header{
+    color: var(--bg-misty-blue);
+    font-size: x-large;
+    font-weight: 500;
+}
