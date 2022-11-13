@@ -1,0 +1,8 @@
+.not_found {
+  border-radius: var(--border-radius);
+  padding: 1em;
+  font-size: 1rem;
+  background-color: var(--bg-dark-blue);
+  color: white;
+  box-shadow: #c3ceda63 0px -50px 36px -28px inset;
+}

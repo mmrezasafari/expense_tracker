@@ -1,8 +1,8 @@
-import Account from './account.svg'
-import Dashboard from './dashboard.svg'
-import Report from './reports.svg'
-import Setting from './setting.svg'
-import Transactions from'./Transactions.svg'
+import AccountIcon from './account.svg'
+import DashboardIcon from './dashboard.svg'
+import ReportIcon from './reports.svg'
+import SettingIcon from './setting.svg'
+import TransactionsIcon from'./Transactions.svg'
 
 
-export {Account, Dashboard, Report, Setting, Transactions}
+export {AccountIcon, DashboardIcon, ReportIcon, SettingIcon, TransactionsIcon}

@@ -1,0 +1,24 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 0fr 5fr;
+  gap: 20;
+  grid-template-areas:
+    "header header"
+    "nav  main ";
+}
+
+.main_header {
+  grid-area: header;
+}
+
+.main_nav {
+  grid-area: nav;
+}
+
+.main_content {
+  grid-area: main;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-misty-blue);
+}

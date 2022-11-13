@@ -1,0 +1,121 @@
+.wrapper_card {
+  width: 50rem;
+  height: 35rem;
+  background-color: white;
+  box-shadow: 0px 10px 20px 10px rgba(39, 39, 39, 0.247);
+  border-radius: 4px;
+  border-color: transparent;
+  padding: 30px;
+}
+
+.accordion_head {
+  border: none;
+  padding: 0;
+}
+
+.accordion_box {
+  font-size: var(--font-size-header);
+  font-weight: 700;
+}
+
+.popover_content{
+  border-radius: var(--border-radius);
+  padding: 8px;
+  font-size: 1rem;
+  background-color: var(--bg-dark-blue) !important;
+  color: white;
+}
+
+.digit_count {
+  font-weight: 700;
+  font-size: 18px;
+  font-family: "LED Digital 7", sans-serif;
+  letter-spacing: 3px;
+}
+
+.filter_button_container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  background-color: var(--bg-misty-blue);
+  border-top: 3px solid var(--bg-dark-blue);
+}
+
+.filter_button {
+  height: 100% !important;
+  padding: 12px;
+  border: none;
+  border-radius: 0 !important;
+  background-color: var(--bg-misty-blue);
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.25s ease-out;
+}
+
+.filter_button:hover {
+  background-color: var(--bg-dark-blue);
+  border-color: var(--bg-gray-blue);
+  color: var(--bg-dark-blue);
+  border-bottom: 5px solid var(--bg-gray-blue);
+}
+
+.transactions_main {
+  height: 90%;
+  margin-top: 20px;
+  padding: 0 12px;
+}
+
+.total_transactions{
+  display: flex;
+  flex-direction: column;
+  margin: 12px 0;
+  align-items: flex-end;
+}
+
+.transactions_badge {
+  width: 50%;
+  min-height: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 12px;
+  margin: 5px 0;
+  border-radius: var(--border-radius);
+  background: rgba(105, 105, 105, 0.33);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.9px);
+  -webkit-backdrop-filter: blur(9.9px);
+}
+
+.divider {
+  border: solid !important;
+  width: 100% !important;
+  border-width: 1px 0px !important;
+  margin-bottom: 10px !important;
+  border-color: var(--bg-dark-blue) !important;
+}
+
+.multiple_select {
+  background-color: rgba(255, 255, 255, 0.678);
+  width: 100%;
+  font-weight: 500;
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  margin: 10px 0px;
+  transition: height 0.25s ease-out;
+}
+
+.modal_content {
+  background-color: #C3CEDAE0;
+  border-radius: 16px;
+  border-radius: var(--border-radius);
+}
+
+.modal_header{
+  background-color: var(--bg-dark-blue);
+  color: white;
+  padding: 10px;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
