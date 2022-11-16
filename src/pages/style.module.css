@@ -119,3 +119,12 @@
   padding: 10px;
   border-radius: var(--border-radius) var(--border-radius) 0 0;
 }
+
+.createAccount_header{
+  display: flex;
+}
+
+.createAccount_main {
+  display: flex;
+  flex-direction: column;
+}

@@ -9,7 +9,17 @@ import {
 } from "./components/layout/Nav/assets/import";
 import { Account, Dashboard, Transactions, Report } from "./pages/import";
 import { Default } from "./layout/Default";
+import { SignIn } from './layout/SignIn'
 import { ChakraProvider } from "@chakra-ui/react";
+
+const Approute = createBrowserRouter([
+  {
+    name: 'SignIn',
+    path:'/',
+    element: <SignIn />,
+    errorElement : Error
+  }
+])
 
 const AppRoutes = createBrowserRouter([
   {
@@ -55,10 +65,14 @@ export default function App() {
   return (
     <ChakraProvider>
       <div className="app">
-        <RouterProvider router={AppRoutes} />
+        {
+          (true)
+          ? <RouterProvider router={Approute} />
+          : <RouterProvider router={AppRoutes} />
+        }
       </div>
     </ChakraProvider>
   );
 }
 
-export { AppRoutes };
+export { AppRoutes, Approute };

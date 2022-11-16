@@ -1,6 +1,5 @@
 import { Select } from "@chakra-ui/react";
 import classes from "./style.module.css";
-import pouchDB from 'pouchdb'
 
 export default function Report() {
   return (
