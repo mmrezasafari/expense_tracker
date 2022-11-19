@@ -1,7 +1,34 @@
-import { Box, Flex, Input, Select, TagLabel, Text } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  Checkbox,
+  CheckboxGroup,
+  Divider,
+  Flex,
+  Input,
+  NumberDecrementStepper,
+  NumberIncrementStepper,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+  Select,
+  Stack,
+  Text
+} from '@chakra-ui/react'
+import '/node_modules/flag-icons/css/flag-icons.min.css'
+import { useState } from 'react'
 import classes from './style.module.css'
+import { useFetchData } from '../hooks/useFetchData'
 
 const CreateAccount = () => {
+  const [value, setValue] = useState('0')
+  const { data, error } = useFetchData('https://api.exchangerate.host/symbols')
+
+  const format = (val) => `$ ` + val
+  const parse = (val) => val.replace(/^\$/, '')
+
+  console.log(data)
+
   return (
     <section className={classes.wrapper_card}>
       <div className={classes.createAccount_header}>
@@ -10,12 +37,17 @@ const CreateAccount = () => {
           height='50'
           src='/src/pages/assets/images/settings.png'
         />
-        <Text fontSize={32} mx='5px'>
+        <Text fontSize={32} mx='10px !important'>
           Money Tracker Setup
         </Text>
       </div>
-      <hr style={{ margin: '10px 0', borderWidth: '1px' }} />
-      <div className={classes.createAccount_main}>
+      <Divider
+        orientation='horizontal'
+        borderColor='blackAlpha.600'
+        mt='4'
+        mb='2'
+      />
+      <Flex flexDirection='column' mb='3'>
         <Text fontSize={28}>Currencies</Text>
         <Box padding={'0 10px'}>
           <Text>
@@ -27,9 +59,20 @@ const CreateAccount = () => {
             <label style={{ width: '49%' }}>
               Base Currency
               <Select placeholder='Select option'>
-                <option value='option1'>Option 1</option>
-                <option value='option2'>Option 2</option>
-                <option value='option3'>Option 3</option>
+                {data && data.symbols
+                  ? Object.values(data.symbols).map((item) => {
+                      return (
+                        <option value={item.code} key={item.code}>
+                          <span
+                            className={`fi fi-${item.code
+                              .substr(0, 2)
+                              .toLowerCase()}`}
+                          ></span>
+                          {`${item.code} - ${item.description}`}
+                        </option>
+                      )
+                    })
+                  : error}
               </Select>
             </label>
             <label style={{ width: '49%' }}>
@@ -42,8 +85,8 @@ const CreateAccount = () => {
             </label>
           </Flex>
         </Box>
-      </div>
-      <div className={classes.createAccount_main}>
+      </Flex>
+      <Flex flexDirection='column'>
         <Text fontSize={28}>Accounts</Text>
         <Box padding={'0 10px'}>
           <Text>
@@ -52,12 +95,22 @@ const CreateAccount = () => {
             your friend.
           </Text>
           <Flex direction='row' justifyContent='space-between' mt={3}>
-            <label style={{ width: '49%' }}>
-              Name <span style={{color: 'red'}}>*</span>
-              <Input placeholder='Basic usage' />
-            </label>
-            <Flex style={{ width: '49%'}}>
-              <label style={{ width: '100%' }}>
+            <Flex direction='column' w='49%'>
+              <label>
+                Name <span style={{ color: 'red' }}>*</span>
+                <Input placeholder='Basic usage' />
+              </label>
+              <CheckboxGroup colorScheme='gray'>
+                <Stack spacing='3' direction='column' my={4}>
+                  <Checkbox isDisabled defaultChecked>
+                    Us Dollar
+                  </Checkbox>
+                  <Checkbox value='false'>Show on Dashboard</Checkbox>
+                </Stack>
+              </CheckboxGroup>
+            </Flex>
+            <Flex flexDirection='column' w='49%'>
+              <label>
                 Group
                 <Select placeholder='Select option'>
                   <option value='option1'>Option 1</option>
@@ -65,10 +118,23 @@ const CreateAccount = () => {
                   <option value='option3'>Option 3</option>
                 </Select>
               </label>
+              <NumberInput
+                onChange={(valueString) => setValue(parse(valueString))}
+                value={format(value)}
+                step={0.1}
+                my='3'
+              >
+                <NumberInputField />
+                <NumberInputStepper>
+                  <NumberIncrementStepper />
+                  <NumberDecrementStepper />
+                </NumberInputStepper>
+              </NumberInput>
+              <Button colorScheme='green'>Save Account</Button>
             </Flex>
           </Flex>
         </Box>
-      </div>
+      </Flex>
     </section>
   )
 }
