@@ -10,7 +10,8 @@ import {
 import { Account, Dashboard, Transactions, Report } from "./pages/import";
 import { Default } from "./layout/Default";
 import { SignIn } from './layout/SignIn'
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import { MultiSelectTheme } from "chakra-multiselect";
 
 const Approute = createBrowserRouter([
   {
@@ -62,8 +63,15 @@ const AppRoutes = createBrowserRouter([
 ]);
 
 export default function App() {
+
+  const theme = extendTheme({
+    components: {
+      MultiSelect: MultiSelectTheme
+    }
+  })
+
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <div className="app">
         {
           (true)

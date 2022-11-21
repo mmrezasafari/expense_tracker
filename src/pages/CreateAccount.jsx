@@ -19,15 +19,29 @@ import '/node_modules/flag-icons/css/flag-icons.min.css'
 import { useState } from 'react'
 import classes from './style.module.css'
 import { useFetchData } from '../hooks/useFetchData'
+import { MultiSelect, MultiSelectTheme } from 'chakra-multiselect'
 
 const CreateAccount = () => {
   const [value, setValue] = useState('0')
-  const { data, error } = useFetchData('https://api.exchangerate.host/symbols')
+  const values = ['1','2','3','4','5']
+  const currencySymbols = useFetchData(
+    'https://api.exchangerate.host/symbols'
+  )
+  const currencyRate = useFetchData(
+    'https://api.exchangerate.host/latest?base=USD'
+  )
+
 
   const format = (val) => `$ ` + val
   const parse = (val) => val.replace(/^\$/, '')
 
-  console.log(data)
+  const handleSelect = (e) => {
+    const value = document.getElementById('select_base_currency').value
+    const group = document.getElementById('select_group').value
+    console.log(value, group)
+  }
+
+  console.log(currencyRate);
 
   return (
     <section className={classes.wrapper_card}>
@@ -58,29 +72,36 @@ const CreateAccount = () => {
           <Flex direction='row' justifyContent='space-between' mt={3}>
             <label style={{ width: '49%' }}>
               Base Currency
-              <Select placeholder='Select option'>
-                {data && data.symbols
-                  ? Object.values(data.symbols).map((item) => {
+              <Select
+                defaultValue='USD'
+                onChange={handleSelect}
+                id='select_base_currency'
+              >
+                <option value='USD'>USD - US Dollar</option>
+                {currencySymbols.data && currencySymbols.data.symbols
+                  ? Object.values(currencySymbols.data.symbols).map((item, index) => {
                       return (
-                        <option value={item.code} key={item.code}>
-                          <span
-                            className={`fi fi-${item.code
-                              .substr(0, 2)
-                              .toLowerCase()}`}
-                          ></span>
+                        <option key={index} value={item.code}>
                           {`${item.code} - ${item.description}`}
                         </option>
                       )
                     })
-                  : error}
+                  : currencySymbols.error}
               </Select>
             </label>
             <label style={{ width: '49%' }}>
               Additional Currencies (optional)
-              <Select placeholder='Select option'>
-                <option value='option1'>Option 1</option>
-                <option value='option2'>Option 2</option>
-                <option value='option3'>Option 3</option>
+              <Select
+                placeholder='Select Additional Currencies'
+                id='select_additional_currency'
+              >
+                {currencyRate.data && currencyRate.data.symbols
+                  ? Object.values(currencyRate.data.symbols).map((item, index) => {
+                        <option key={index} value={item.code}>
+                          {`${item.code} - ${item.description}`}
+                        </option>
+                    })
+                  : currencyRate.error}
               </Select>
             </label>
           </Flex>
@@ -112,10 +133,16 @@ const CreateAccount = () => {
             <Flex flexDirection='column' w='49%'>
               <label>
                 Group
-                <Select placeholder='Select option'>
-                  <option value='option1'>Option 1</option>
-                  <option value='option2'>Option 2</option>
-                  <option value='option3'>Option 3</option>
+                <Select
+                  defaultValue='cash'
+                  onChange={handleSelect}
+                  id='select_group'
+                >
+                  <option value='cash'>Cash</option>
+                  <option value='bank-account'>Bank Account</option>
+                  <option value='depoist'>Deposit</option>
+                  <option value='credit'>Credit</option>
+                  <option value='assets'>Asset</option>
                 </Select>
               </label>
               <NumberInput
@@ -134,6 +161,15 @@ const CreateAccount = () => {
             </Flex>
           </Flex>
         </Box>
+        <Flex>
+          {
+        currencySymbols.data && currencySymbols.data.symbols
+          ? <MultiSelect
+            options={Object.values(currencySymbols.data.symbols).map(v => { console.log(v); return `<i>${v.code}</i>` })}
+          />
+          : currencySymbols.error
+      }
+        </Flex>
       </Flex>
     </section>
   )
