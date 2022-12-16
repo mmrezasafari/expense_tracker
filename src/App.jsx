@@ -9,18 +9,17 @@ import {
 } from "./components/layout/Nav/assets/import";
 import { Account, Dashboard, Transactions, Report } from "./pages/import";
 import { Default } from "./layout/Default";
-import { SignIn } from './layout/SignIn'
-import { ChakraProvider, extendTheme } from "@chakra-ui/react";
-import { MultiSelectTheme } from "chakra-multiselect";
+import { SignIn } from "./layout/SignIn";
+import { ChakraProvider } from "@chakra-ui/react";
 
 const Approute = createBrowserRouter([
   {
-    name: 'SignIn',
-    path:'/',
+    name: "SignIn",
+    path: "/",
     element: <SignIn />,
-    errorElement : Error
-  }
-])
+    errorElement: Error,
+  },
+]);
 
 const AppRoutes = createBrowserRouter([
   {
@@ -63,21 +62,14 @@ const AppRoutes = createBrowserRouter([
 ]);
 
 export default function App() {
-
-  const theme = extendTheme({
-    components: {
-      MultiSelect: MultiSelectTheme
-    }
-  })
-
   return (
-    <ChakraProvider theme={theme}>
+    <ChakraProvider>
       <div className="app">
-        {
-          (true)
-          ? <RouterProvider router={Approute} />
-          : <RouterProvider router={AppRoutes} />
-        }
+        {true ? (
+          <RouterProvider router={Approute} />
+        ) : (
+          <RouterProvider router={AppRoutes} />
+        )}
       </div>
     </ChakraProvider>
   );
