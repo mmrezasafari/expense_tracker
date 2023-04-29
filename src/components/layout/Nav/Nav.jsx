@@ -6,7 +6,7 @@ const Nav = ({ navLinks }) => {
     <section className={classes.nav_container}>
       <article className={classes.list_conteinr}>
         <ul>
-          {(navLinks[0].children).map((prop, index) => {
+          {navLinks[1].children.map((prop, index) => {
             return (
               <li className={classes.link} key={index}>
                 <Link to={prop.path} className={classes.link_a}>

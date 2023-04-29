@@ -1,3 +1,4 @@
+// chakra
 import {
   Accordion,
   AccordionButton,
@@ -5,11 +6,18 @@ import {
   AccordionPanel,
   AccordionIcon,
   Box,
+  theme,
 } from "@chakra-ui/react";
+// components
 import { NotFound } from "../components/import";
+// style
 import classes from "./style.module.css";
+// db
+import { useAccount } from "../provider/AccountProvider";
 
 export default function Dashboard() {
+  const {account, setAccount} = useAccount();
+
   return (
     <>
       <section className={classes.wrapper_card}>

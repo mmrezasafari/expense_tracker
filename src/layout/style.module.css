@@ -3,10 +3,9 @@
   height: 100%;
   display: grid;
   grid-template-columns: 0fr 5fr;
-  gap: 20;
   grid-template-areas:
     "header header"
-    "nav  main ";
+    "nav main"; 
 }
 
 .main_header {

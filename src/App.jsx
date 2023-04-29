@@ -12,16 +12,14 @@ import { Default } from "./layout/Default";
 import { SignIn } from "./layout/SignIn";
 import { ChakraProvider } from "@chakra-ui/react";
 
-const Approute = createBrowserRouter([
+
+const AppRoutes = createBrowserRouter([
   {
     name: "SignIn",
-    path: "/",
+    path: "/signIn",
     element: <SignIn />,
     errorElement: Error,
   },
-]);
-
-const AppRoutes = createBrowserRouter([
   {
     name: "Default",
     path: "/",
@@ -65,14 +63,10 @@ export default function App() {
   return (
     <ChakraProvider>
       <div className="app">
-        {true ? (
-          <RouterProvider router={Approute} />
-        ) : (
-          <RouterProvider router={AppRoutes} />
-        )}
+        <RouterProvider router={AppRoutes} />
       </div>
     </ChakraProvider>
   );
 }
 
-export { AppRoutes, Approute };
+export { AppRoutes };

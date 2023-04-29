@@ -1,37 +1,39 @@
-@import url('http://fonts.cdnfonts.com/css/led-digital-7');
-       
 :root {
-    --bg-midnight-blue: #0C4160;
-    --bg-gray-blue: #738FA7;
-    --bg-misty-blue: #C3CEDA;
-    --bg-dark-blue: #071330;
-    --font-size-header: 20px;
-    --font-size-p: 18px;
-    --border-radius: 0.28571429rem
+  --bg-midnight-blue: #0c4160;
+  --bg-gray-blue: #738fa7;
+  --bg-misty-blue: #c3ceda;
+  --bg-dark-blue: #071330;
+  --font-size-header: 20px;
+  --font-size-p: 18px;
+  --border-radius: 0.28571429rem;
 }
 
-html, body, #root, .app {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    background-color: var(--bg-misty-blue);
+html,
+body,
+#root,
+.app {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-misty-blue);
 }
 
 * {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 p {
-    margin: 0 !important;
+  margin: 0 !important;
 }
 
 nav {
-    width: 8rem;
-    position: relative;
-    left: 0;
+  width: 8rem;
+  position: relative;
+  left: 0;
 }
 
 label {
-    font-weight: 500;
+  font-weight: 500;
 }
